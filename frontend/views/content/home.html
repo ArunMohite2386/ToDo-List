@@ -98,13 +98,13 @@
                     <!-- <script type="text/ng-template" id="display"> -->
                     <td>{{$index+1}}</td>
                     <td>
-                        <div ng-hide="viewField"> {{toDoList1.Priority | uppercase}}</div>
+                        <div ng-hide="viewField"> {{toDoList1.priority | uppercase}}</div>
 
                         <div ng-show="modifyField">
                             <ui-select ng-model="toDoList1.Priority">
                                 <ui-select-match placeholder="Select Priority">{{$select.selected.Priority}}</ui-select-match>
-                                <!-- <ui-select-match placeholder="Select Priority">{{toDoList1.Priority}}</ui-select-match> -->
-                                <ui-select-choices repeat="toDoList2 in Priorities | filter: $select.search">
+
+                                <ui-select-choices repeat="toDoList2 in properties | filter: $select.search">
                                     <div ng-bind-html="toDoList2.Priority | highlight: $select.search"></div>
                                 </ui-select-choices>
                             </ui-select>
@@ -113,20 +113,20 @@
                     </td>
                     <!-- <td>{{toDoList1.Priority}}</td> -->
                     <td>
-                        <div ng-hide="viewField">{{toDoList1.Status | uppercase}}</div>
+                        <div ng-hide="viewField">{{toDoList1.status | uppercase}}</div>
                         <div ng-show="modifyField"><input type="text" style="width:100%;" ng-model="toDoList1.Status" /></div>
                     </td>
                     <td>
-                        <div ng-hide="viewField">{{toDoList1.DueDate | uppercase}}</div>
+                        <div ng-hide="viewField">{{toDoList1.dueDate | uppercase}}</div>
                         <div ng-show="modifyField"><input type="date" style="width:100%;" value="{{toDoList1.DueDate}}"
                                 ng-model="toDoList1.DueDate" /></div>
                     </td>
                     <td>
-                        <div ng-hide="viewField">{{toDoList1.Project | uppercase}}</div>
+                        <div ng-hide="viewField">{{toDoList1.project | uppercase}}</div>
                         <div ng-show="modifyField"><input type="text" style="width:100%;" ng-model="toDoList1.Project" /></div>
                     </td>
                     <td>
-                        <div ng-hide="viewField">{{toDoList1.Remark | uppercase}}</div>
+                        <div ng-hide="viewField">{{toDoList1.remark | uppercase}}</div>
                         <div ng-show="modifyField"><input type="text" style="width:100%;" ng-model="toDoList1.Remark" /></div>
                     </td>
                     <td>
