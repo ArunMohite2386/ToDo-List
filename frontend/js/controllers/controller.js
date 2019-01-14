@@ -3,13 +3,6 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         TemplateService.title = "Home"; //This is the Title of the Website
         $scope.navigation = NavigationService.getNavigation();
         $scope.formData = {};
-        $scope.name = "Arunkumar Mohite";
-        // $scope.Employee = {
-        //     name: "Arunkumar",
-        //     skills: ["Dot net developement, Mobile app developement"],
-
-        // };
-
         $scope.table = {
             search: ""
         };
@@ -37,19 +30,21 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
 
         ];
         $scope.Priorities = [{
-            id: "1",
-            Priority: "High"
-           
-        },
-        {   id: "2",
-            Priority: "Low"
-           
-        },
-        {   id: "3", 
-            Priority: "Medium"
-        },
+                id: "1",
+                Priority: "High"
 
-    ];
+            },
+            {
+                id: "2",
+                Priority: "Low"
+
+            },
+            {
+                id: "3",
+                Priority: "Medium"
+            },
+
+        ];
         $scope.modify = function (toDoList, event) {
             $scope.id = event.target.id;
             $scope.modifyField = true;
@@ -63,7 +58,7 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         $scope.update = function (toDoList, event) {
 
             $scope.id = event.target.id;
-           // alert($scope.selected);
+            // alert($scope.selected);
             $scope.modifyField = false;
             $scope.viewField = false;
 
