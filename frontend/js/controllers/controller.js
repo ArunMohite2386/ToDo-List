@@ -7,41 +7,41 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
             search: ""
         };
         $scope.toDoList = [{
-                Priority: "High",
-                Status: "In-Progress",
-                DueDate: "2019-01-14",
-                Project: "To Do list Project",
-                Remark: "Working"
+                priority : "High",
+                status: "In-Progress",
+                dueDate: "2019-01-14",
+                project: "To Do list Project",
+                remark: "Working"
             },
             {
-                Priority: "Low",
-                Status: "Hold",
-                DueDate: "2019-01-14",
-                Project: "New Project",
-                Remark: "Ready to assign"
+                priority: "Low",
+                status: "Hold",
+                dueDate: "2019-01-14",
+                project: "New Project",
+                remark: "Ready to assign"
             },
             {
-                Priority: "Medium",
-                Status: "In-Progress",
-                DueDate: "2019-01-14",
-                Project: "Ios Project",
-                Remark: "Ready to assign"
+                priority: "Medium",
+                status: "In-Progress",
+                dueDate: "2019-01-14",
+                project: "Ios Project",
+                remark: "Ready to assign"
             },
 
         ];
-        $scope.Priorities = [{
+        $scope.properties = [{
                 id: "1",
-                Priority: "High"
+                priority: "High"
 
             },
             {
                 id: "2",
-                Priority: "Low"
+                priority: "Low"
 
             },
             {
                 id: "3",
-                Priority: "Medium"
+                priority: "Medium"
             },
 
         ];
@@ -56,12 +56,9 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         }
 
         $scope.update = function (toDoList, event) {
-
             $scope.id = event.target.id;
-            // alert($scope.selected);
             $scope.modifyField = false;
             $scope.viewField = false;
-
         };
         $scope.selected = [];
 
@@ -76,13 +73,6 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
             index = $scope.id;
 
 
-            // var comArr = eval($scope.toDoList);
-            // for (var i = 0; i < comArr.length; i++) {
-            //     if (comArr[i].name === name) {
-            //         index = i;
-            //         break;
-            //     }
-            // }
             if (index === -1) {
                 alert("Something gone wrong");
             } else {
@@ -93,10 +83,6 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         };
 
         $scope.addRow = function () {
-            // console.log("$scope.Priority", $scope.formData)
-            // if (toDoForm.formData.Priority.$valid) {
-            //     alert("True");
-            // }
             $scope.toDoList.push({
                 Priority: $scope.formData.Priority,
                 Status: $scope.formData.Status,
@@ -107,7 +93,6 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
             $scope.formData = {};
             $scope.showForm = false;
         };
-
         $scope.addFrm = function () {
             $scope.showForm = true;
         }
@@ -120,7 +105,6 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         $scope.getdetail = function (value) {
             $scope.indexval = value;
             Cricketers[Value].name;
-
         };
 
 
@@ -153,11 +137,6 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
             invoice: "#1024590 invoice is Pending",
             img: 'img/mike.png'
         }];
-
-
-
-
-
         $scope.submitForm = function (data) {
             console.log("This is it");
             return new Promise(function (callback) {
@@ -166,8 +145,6 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
                 }, 5000);
             });
         };
-
-
         $scope.rate = 7;
         $scope.max = 10;
         $scope.isReadonly = false;
