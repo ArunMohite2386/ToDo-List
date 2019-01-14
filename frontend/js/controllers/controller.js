@@ -7,11 +7,11 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
             search: ""
         };
         $scope.toDoList = [{
-                Priority: "High",
-                Status: "In-Progress",
-                DueDate: "2019-01-14",
-                Project: "To Do list Project",
-                Remark: "Working"
+                prority: "High",
+                status: "In-Progress",
+                dueDate: "2019-01-14",
+                project: "To Do list Project",
+                remark: "Working"
             },
             {
                 Priority: "Low",
@@ -56,12 +56,9 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         }
 
         $scope.update = function (toDoList, event) {
-
             $scope.id = event.target.id;
-            // alert($scope.selected);
             $scope.modifyField = false;
             $scope.viewField = false;
-
         };
         $scope.selected = [];
 
