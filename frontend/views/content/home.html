@@ -15,18 +15,12 @@
     <!--<pre>{{data|json}}</pre>-->
     <!--<pre style="background: #b0deff;">{{formData.email|json}}</pre>-->
     <div class="row">
-        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
-            <label name="Name">Name: </label>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <input type="Text" class="form-control" ng-model="name" id="Name">
-        </div>
         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-            <span class="glyphicon glyphicon-search"> </span> <label name="Name" style="float: right;">Search: </label>
+            <span class="glyphicon glyphicon-search"> </span> <label name="Name">Search: </label>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <span class="glyphicon glyphicon-search"></span> <input type="text" style="border-radius: 4px;" ng-model="table.Search"
-                placeholder="Enter Search  Text" class="form-control">
+            <span class="glyphicon glyphicon-search"></span> <input type="text" ng-model="table.Search" placeholder="Enter Search  Text"
+                class="form-control">
         </div>
         <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
             <input type="button" text="+" ng-click="addFrm()" class="btn btn-info" value="ADD" id="{{$index+1}}">
@@ -45,13 +39,6 @@
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <input type="Text" class="form-control" ng-model="formData.Priority" id="Name" required>
-                    <!-- <ui-select ng-model="selected[formData.Priority]">
-                    <ui-select-match placeholder="Select Priority">{{$select.selected.Priority}}</ui-select-match>
-                   
-                    <ui-select-choices repeat="toDoList2 in toDoList | filter: $select.search">
-                        <div ng-bind-html="toDoList2.Priority | highlight: $select.search"></div>
-                    </ui-select-choices>
-                </ui-select> -->
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
                     <label name="Name">Status: </label>
@@ -111,9 +98,9 @@
                     <!-- <script type="text/ng-template" id="display"> -->
                     <td>{{$index+1}}</td>
                     <td>
-                        <div ng-hide="viewField && id == $index"> {{toDoList1.Priority | uppercase}}</div>
+                        <div ng-hide="viewField"> {{toDoList1.Priority | uppercase}}</div>
 
-                        <div ng-show="modifyField && id == $index">
+                        <div ng-show="modifyField">
                             <ui-select ng-model="toDoList1.Priority">
                                 <ui-select-match placeholder="Select Priority">{{$select.selected.Priority}}</ui-select-match>
                                 <!-- <ui-select-match placeholder="Select Priority">{{toDoList1.Priority}}</ui-select-match> -->
@@ -126,46 +113,29 @@
                     </td>
                     <!-- <td>{{toDoList1.Priority}}</td> -->
                     <td>
-                        <div ng-hide="viewField && id == $index">{{toDoList1.Status | uppercase}}</div>
-                        <div ng-show="modifyField && id == $index"><input type="text" style="width:100%;" ng-model="toDoList1.Status" /></div>
+                        <div ng-hide="viewField">{{toDoList1.Status | uppercase}}</div>
+                        <div ng-show="modifyField"><input type="text" style="width:100%;" ng-model="toDoList1.Status" /></div>
                     </td>
                     <td>
-                        <div ng-hide="viewField && id == $index">{{toDoList1.DueDate | uppercase}}</div>
-                        <div ng-show="modifyField && id == $index"><input type="date" style="width:100%;" value="{{toDoList1.DueDate}}"
+                        <div ng-hide="viewField">{{toDoList1.DueDate | uppercase}}</div>
+                        <div ng-show="modifyField"><input type="date" style="width:100%;" value="{{toDoList1.DueDate}}"
                                 ng-model="toDoList1.DueDate" /></div>
                     </td>
                     <td>
-                        <div ng-hide="viewField && id == $index">{{toDoList1.Project | uppercase}}</div>
-                        <div ng-show="modifyField && id == $index"><input type="text" style="width:100%;" ng-model="toDoList1.Project" /></div>
+                        <div ng-hide="viewField">{{toDoList1.Project | uppercase}}</div>
+                        <div ng-show="modifyField"><input type="text" style="width:100%;" ng-model="toDoList1.Project" /></div>
                     </td>
                     <td>
-                        <div ng-hide="viewField && id == $index">{{toDoList1.Remark | uppercase}}</div>
-                        <div ng-show="modifyField && id == $index"><input type="text" style="width:100%;" ng-model="toDoList1.Remark" /></div>
+                        <div ng-hide="viewField">{{toDoList1.Remark | uppercase}}</div>
+                        <div ng-show="modifyField"><input type="text" style="width:100%;" ng-model="toDoList1.Remark" /></div>
                     </td>
                     <td>
                         <button ng-hide="viewField" class="btn btn-default" ng-click="modify(toDoList1, $event )" id="{{$index}}">Edit</button>
-                        <button ng-show="modifyField && id == $index" ng-click="update(toDoList1, $event)" id="{{$index}}">Update</button>
-
-                        <!-- <img src="img/edit.png" width="40"></img> -->
-                        <!-- <button (click)="toDoList1.isEditable=!toDoList1.isEditable" *ngIf="!toDoList1.isEditable">
-                            Edit </button>
-                        <button *ngIf="toDoList1.isEditable" (click)="toDoList1.isEditable=!toDoList1.isEditable">Save</button> -->
-                        <!-- <input type="button" text="Edit" ng-click="editRow();" class="btn btn-info " value="Edit"></input> -->
+                        <button ng-show="modifyField" ng-click="update(toDoList1, $event)" id="{{$index}}">Update</button>
                     </td>
                     <td><input type="button" text="Delete" ng-click="removeRow($event)" class="btn btn-info" value="Delete"
                             id="{{$index+1}}"></input>
-                        <!-- <button class="btn btn-sm btn-danger" ng-confirm-click="Are you sure to delete this record ?"
-                            confirmed-click="removeRow($event)">Delete</button> -->
                     </td>
-                    <!-- </script>
-                    <script type="text/ng-template" id="edit">
-                        <td><input type="text" ng-model="Cricketers.selected.name" /></td>
-                        <td><input type="text" ng-model="Cricketers.selected.Role" /></td>
-                        <td>
-                         <button ng-click="saveContact($index)">Save</button>
-                         <button ng-click="reset()">Cancel</button>
-                        </td> 
-                     </script> -->
                 </tr>
             </tbody>
         </table>
