@@ -1,143 +1,213 @@
-<style>
-    .toDoForm{
-    border:1px solid gray;
-    border-radius: 4px;
-    padding: 15px;
-    margin-bottom: 10px;
-}
-</style>
 <div class="container">
-    <center>
-        <h4>To Do List</h4>
-    </center>
-    <hr>
-    <!-- <input type="Text" class="form-control" ng-model="id" id="Name"> -->
-    <!--<pre>{{data|json}}</pre>-->
-    <!--<pre style="background: #b0deff;">{{formData.email|json}}</pre>-->
-    <div class="row">
-        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-            <span class="glyphicon glyphicon-search"> </span> <label name="Name">Search: </label>
+  <center><h4>To Do List</h4></center>
+  <hr />
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+      <span class="glyphicon glyphicon-search"> </span>
+      <label name="Name">Search: </label>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <span class="glyphicon glyphicon-search"></span>
+      <input
+        type="text"
+        ng-model="table.Search"
+        placeholder="Enter Search  Text"
+        class="form-control"
+      />
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+      <button
+        type="button"
+        ng-click="showAdd()"
+        class="btn btn-primary"
+        ng-hide="table.add"
+      >
+        ADD
+      </button>
+    </div>
+  </div>
+
+  <br />
+  <form name="toDoForm" ng-show="table.add">
+    <div class="toDoForm">
+      <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+          <label name="Name">Priority: </label>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <span class="glyphicon glyphicon-search"></span> <input type="text" ng-model="table.Search" placeholder="Enter Search  Text"
-                class="form-control">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <input
+            type="Text"
+            class="form-control"
+            ng-model="formData.priority"
+            id="Name"
+            required
+          />
         </div>
         <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
-            <input type="button" text="+" ng-click="addFrm()" class="btn btn-info" value="ADD" id="{{$index+1}}">
+          <label name="Name">Status: </label>
         </div>
-    </div>
-
-
-    <br>
-    <form name="toDoForm">
-
-
-        <div class="toDoForm" ng-show="showForm">
-            <div class="row">
-                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
-                    <label name="Name">Priority: </label>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <input type="Text" class="form-control" ng-model="formData.Priority" id="Name" required>
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
-                    <label name="Name">Status: </label>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <input type="Text" class="form-control" ng-model="formData.Status" id="Name" required>
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
-                    <label name="Name">Due-Date: </label>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <input type="date" class="form-control" ng-model="formData.DueDate" id="Name" required>
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
-                    <label name="Name">Project: </label>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <input type="Text" class="form-control" ng-model="formData.Project" id="Name" required>
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
-                    <label name="Name">Remark: </label>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <input type="Text" class="form-control" ng-model="formData.Remark" id="Name" required>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <hr>
-                    <center>
-                        <button ng-show="showForm" ng-click="addRow()" id="AddNew">ADD</button>
-                        <button ng-show="showForm" ng-click="cancel()" id="AddNew">CANCEL</button>
-                    </center>
-                </div>
-
-            </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <input
+            type="Text"
+            class="form-control"
+            ng-model="formData.status"
+            id="Name"
+            required
+          />
         </div>
-    </form>
-    <div class="table-responsive">
-
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Sr.No.</th>
-                    <th>Priority</th>
-                    <th>Status</th>
-                    <th>Due Date</th>
-                    <th>Project/Task</th>
-                    <th>Remark/Comment</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="toDoList1 in toDoList|filter:table.Search" *ngFor="let toDoList1 of toDoList">
-                    <!-- <script type="text/ng-template" id="display"> -->
-                    <td>{{$index+1}}</td>
-                    <td>
-                        <div ng-hide="viewField"> {{toDoList1.priority | uppercase}}</div>
-
-                        <div ng-show="modifyField">
-                            <ui-select ng-model="toDoList1.Priority">
-                                <ui-select-match placeholder="Select Priority">{{$select.selected.Priority}}</ui-select-match>
-
-                                <ui-select-choices repeat="toDoList2 in properties | filter: $select.search">
-                                    <div ng-bind-html="toDoList2.Priority | highlight: $select.search"></div>
-                                </ui-select-choices>
-                            </ui-select>
-
-                        </div>
-                    </td>
-                    <!-- <td>{{toDoList1.Priority}}</td> -->
-                    <td>
-                        <div ng-hide="viewField">{{toDoList1.status | uppercase}}</div>
-                        <div ng-show="modifyField"><input type="text" style="width:100%;" ng-model="toDoList1.Status" /></div>
-                    </td>
-                    <td>
-                        <div ng-hide="viewField">{{toDoList1.dueDate | uppercase}}</div>
-                        <div ng-show="modifyField"><input type="date" style="width:100%;" value="{{toDoList1.DueDate}}"
-                                ng-model="toDoList1.DueDate" /></div>
-                    </td>
-                    <td>
-                        <div ng-hide="viewField">{{toDoList1.project | uppercase}}</div>
-                        <div ng-show="modifyField"><input type="text" style="width:100%;" ng-model="toDoList1.Project" /></div>
-                    </td>
-                    <td>
-                        <div ng-hide="viewField">{{toDoList1.remark | uppercase}}</div>
-                        <div ng-show="modifyField"><input type="text" style="width:100%;" ng-model="toDoList1.Remark" /></div>
-                    </td>
-                    <td>
-                        <button ng-hide="viewField" class="btn btn-default" ng-click="modify(toDoList1, $event )" id="{{$index}}">Edit</button>
-                        <button ng-show="modifyField" ng-click="update(toDoList1, $event)" id="{{$index}}">Update</button>
-                    </td>
-                    <td><input type="button" text="Delete" ng-click="removeRow($event)" class="btn btn-info" value="Delete"
-                            id="{{$index+1}}"></input>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+          <label name="Name">Due-Date: </label>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <input
+            type="date"
+            class="form-control"
+            ng-model="formData.dueDate"
+            id="Name"
+            required
+          />
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+          <label name="Name">Project: </label>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <input
+            type="Text"
+            class="form-control"
+            ng-model="formData.project"
+            id="Name"
+            required
+          />
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+          <label name="Name">Remark: </label>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <input
+            type="Text"
+            class="form-control"
+            ng-model="formData.remark"
+            id="Name"
+            required
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <hr />
+          <div class="center">
+            <button ng-click="addToDoList()" class="btn btn-primary">
+              ADD
+            </button>
+            <button class="btn btn-default" ng-click="showAdd()">CANCEL</button>
+          </div>
+          <hr />
+        </div>
+      </div>
     </div>
+  </form>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sr.No.</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>Due Date</th>
+          <th>Project/Task</th>
+          <th>Remark/Comment</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="toDoList in toDoLists|filter:table.Search">
+          <td>{{ $index + 1 }}</td>
+          <td>
+            <div>{{ toDoList.priority }}</div>
+
+            <div>
+              <ui-select ng-model="toDoList.Priority">
+                <ui-select-match placeholder="Select Priority">{{
+                  $select.selected.Priority
+                }}</ui-select-match>
+
+                <ui-select-choices
+                  repeat="toDoList2 in properties | filter: $select.search"
+                >
+                  <div
+                    ng-bind-html="toDoList2.Priority | highlight: $select.search"
+                  ></div>
+                </ui-select-choices>
+              </ui-select>
+            </div>
+          </td>
+          <td>
+            <div>{{ toDoList.status }}</div>
+            <div ng-show="modifyField">
+              <input
+                type="text"
+                style="width:100%;"
+                ng-model="toDoList.Status"
+              />
+            </div>
+          </td>
+          <td>
+            <div>{{ toDoList.dueDate | date }}</div>
+            <div ng-show="modifyField">
+              <input
+                type="date"
+                style="width:100%;"
+                value="{{ toDoList.DueDate }}"
+                ng-model="toDoList.DueDate"
+              />
+            </div>
+          </td>
+          <td>
+            <div>{{ toDoList.project }}</div>
+            <div>
+              <input
+                type="text"
+                style="width:100%;"
+                ng-model="toDoList.Project"
+              />
+            </div>
+          </td>
+          <td>
+            <div ng-hide="toDoList.edit">{{ toDoList.remark }}</div>
+            <div>
+              <input
+                ng-show="toDoList.edit"
+                type="text"
+                class="form-control"
+                ng-model="toDoList.Remark"
+                placeholder="Enter Remark"
+              />
+            </div>
+          </td>
+          <td>
+            <button
+              ng-hide="toDoList.edit"
+              ng-click="enableEdit(toDoList)"
+              class="btn btn-primary"
+            >
+              Edit
+            </button>
+            <button
+              ng-show="toDoList.edit"
+              ng-click="edit(toDoList)"
+              class="btn btn-primary"
+            >
+              Update
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-danger" ng-click="delete(toDoList)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
