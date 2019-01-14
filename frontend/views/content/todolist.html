@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row">
+        <h4>To Do List</h4>
+    </div>
+    <!--<pre>{{data|json}}</pre>-->
+    <!--<pre style="background: #b0deff;">{{formData.email|json}}</pre>-->
+    <div class="Row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <input type="Text" class="form-control" id="Name">
+
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <span class="glyphicon glyphicon-search"></span> <input type="text" style="border-radius: 4px;" ng-model="table.Search"
+                placeholder="Enter Search  Text" class="form-control">
+
+
+        </div>
+    </div>
+
+
+    <div class="table-responsive">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th> Sr.No.</th>
+                    <th> Priority</th>
+                    <th>Status</th>
+                    <th> Due Date</th>
+                    <th> Project/Task</th>
+                    <th>Remark/Comment</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>Save</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Cricketr in Cricketers|filter:table.Search">
+                    <!-- <script type="text/ng-template" id="display"> -->
+                    <td>{{$index+1}}</td>
+                    <td>{{toDoList.Priority}}</td>
+                    <td>{{toDoList.Status}}</td>
+                    <td>{{toDoList.DueDate}}</td>
+                    <td>{{toDoList.Project}}</td>
+                    <td>{{toDoList.Remark}}</td>
+                    <td><input type="button" text="Edit" ng-click="editRow();" class="btn btn-info " value="Edit"></input></td>
+                    <td><input type="button" text="Delete" ng-click="DeleteRow();" class="btn btn-info " value="Delete"></input></td>
+                    <td><input type="button" text="Save" ng-click="SaveRow();" class="btn btn-info " value="Save"></input></td>
+                    <!-- </script>
+                    <script type="text/ng-template" id="edit">
+                        <td><input type="text" ng-model="Cricketers.selected.name" /></td>
+                        <td><input type="text" ng-model="Cricketers.selected.Role" /></td>
+                        <td>
+                         <button ng-click="saveContact($index)">Save</button>
+                         <button ng-click="reset()">Cancel</button>
+                        </td> 
+                     </script> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
