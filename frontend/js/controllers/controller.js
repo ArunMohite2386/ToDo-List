@@ -47,7 +47,7 @@ myApp
     $http
   ) {
     $scope.template = TemplateService.getHTML("content/links.html");
-    TemplateService.title = "Links"; // This is the Title of the Website
+    TemplateService.title = "todoList"; // This is the Title of the Website
     $scope.navigation = NavigationService.getNavigation();
   })
   //Controller for ToDoList
