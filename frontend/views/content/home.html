@@ -124,10 +124,10 @@
         <tr ng-repeat="toDoList in toDoLists|filter:table.Search">
           <td>{{ $index + 1 }}</td>
           <td>
-            <div>{{ toDoList.priority }}</div>
+            <div ng-hide="toDoList.edit">{{ toDoList.priority }}</div>
 
             <div>
-              <ui-select ng-model="toDoList.Priority">
+              <ui-select ng-model="toDoList.priority" ng-show="toDoList.edit">
                 <ui-select-match placeholder="Select Priority">{{
                   $select.selected.Priority
                 }}</ui-select-match>
@@ -143,33 +143,36 @@
             </div>
           </td>
           <td>
-            <div>{{ toDoList.status }}</div>
-            <div ng-show="modifyField">
+            <div ng-hide="toDoList.edit">{{ toDoList.status }}</div>
+            <div>
               <input
+                ng-show="toDoList.edit"
                 type="text"
                 style="width:100%;"
-                ng-model="toDoList.Status"
+                ng-model="toDoList.status"
               />
             </div>
           </td>
           <td>
-            <div>{{ toDoList.dueDate | date }}</div>
-            <div ng-show="modifyField">
+            <div ng-hide="toDoList.edit">{{ toDoList.dueDate | date }}</div>
+            <div>
               <input
+                ng-show="toDoList.edit"
                 type="date"
                 style="width:100%;"
                 value="{{ toDoList.DueDate }}"
-                ng-model="toDoList.DueDate"
+                ng-model="toDoList.dueDate"
               />
             </div>
           </td>
           <td>
-            <div>{{ toDoList.project }}</div>
+            <div ng-hide="toDoList.edit">{{ toDoList.project }}</div>
             <div>
               <input
+                ng-show="toDoList.edit"
                 type="text"
                 style="width:100%;"
-                ng-model="toDoList.Project"
+                ng-model="toDoList.project"
               />
             </div>
           </td>
@@ -180,7 +183,7 @@
                 ng-show="toDoList.edit"
                 type="text"
                 class="form-control"
-                ng-model="toDoList.Remark"
+                ng-model="toDoList.remark"
                 placeholder="Enter Remark"
               />
             </div>
