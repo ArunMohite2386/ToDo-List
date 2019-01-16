@@ -45,6 +45,10 @@ myApp.factory("TodoList", function() {
   return {
     getAll: function() {
       return toDoList;
+    },    
+    getddlPriority: function()
+    {
+      return prioritiesDetails;
     },
     add: function(todoObject) {
       toDoList.push(todoObject);

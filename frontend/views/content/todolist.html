@@ -12,8 +12,6 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <span class="glyphicon glyphicon-search"></span> <input type="text" style="border-radius: 4px;" ng-model="table.Search"
                 placeholder="Enter Search  Text" class="form-control">
-
-
         </div>
     </div>
 
@@ -31,7 +29,7 @@
                     <th>Remark/Comment</th>
                     <th>Edit</th>
                     <th>Delete</th>
-                    <th>Save</th>
+                   
                 </tr>
             </thead>
             <tbody>
@@ -45,16 +43,8 @@
                     <td>{{toDoList.Remark}}</td>
                     <td><input type="button" text="Edit" ng-click="editRow();" class="btn btn-info " value="Edit"></input></td>
                     <td><input type="button" text="Delete" ng-click="DeleteRow();" class="btn btn-info " value="Delete"></input></td>
-                    <td><input type="button" text="Save" ng-click="SaveRow();" class="btn btn-info " value="Save"></input></td>
-                    <!-- </script>
-                    <script type="text/ng-template" id="edit">
-                        <td><input type="text" ng-model="Cricketers.selected.name" /></td>
-                        <td><input type="text" ng-model="Cricketers.selected.Role" /></td>
-                        <td>
-                         <button ng-click="saveContact($index)">Save</button>
-                         <button ng-click="reset()">Cancel</button>
-                        </td> 
-                     </script> -->
+                   
+                   
                 </tr>
             </tbody>
         </table>
